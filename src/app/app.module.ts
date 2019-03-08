@@ -13,27 +13,25 @@ import { InMemoryDataService } from './in-memory-data.service';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './auth-guard/auth-guard.module';
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { NavComponent } from './ui/nav/nav.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeroesComponent,
-    HeroDetailComponent,
     MessagesComponent,
-    HeroSearchComponent,
-    NavComponent
+    NavComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AuthGuard,
     BrowserAnimationsModule,
     MaterialElementsModule,
     FormsModule,

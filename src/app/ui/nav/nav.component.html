@@ -1,3 +1,11 @@
 <mat-toolbar color="primary">
-  <span>My Application</span>
+  <span>Weather App</span>
+  <span class="fill"></span>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item><a routerLink="/heroes">Heroes</a></button>
+    <button mat-menu-item><a routerLink="/dashboard">Dashboard</a></button>
+  </mat-menu>
 </mat-toolbar>

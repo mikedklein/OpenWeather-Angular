@@ -1,0 +1,30 @@
+<mat-card class="login">
+  <mat-toolbar color="primary" class="login-toolbar">
+    <mat-card-title> Please Login</mat-card-title>
+  </mat-toolbar>
+  <form class="login-form" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <mat-form-field class="login-form-field">
+      <input
+        id="username"
+        name="username"
+        matInput
+        placeholder="email"
+        type="email"
+        ngModel
+        required
+      />
+    </mat-form-field>
+    <mat-form-field class="login-form-field">
+      <input
+        id="password"
+        name="password"
+        matInput
+        placeholder="password"
+        type="password"
+        ngModel
+        required
+      />
+    </mat-form-field>
+    <button mat-button color="primary">Login</button>
+  </form>
+</mat-card>

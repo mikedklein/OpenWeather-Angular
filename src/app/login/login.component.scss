@@ -1,0 +1,23 @@
+.login {
+  width: 60%;
+  margin: 5rem auto 0 auto;
+  padding: 0;
+  .login-toolbar {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+}
+.login-form {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  .login-form-field {
+    margin-bottom: 20px;
+    &:first-child {
+      margin-top: 20px;
+    }
+  }
+  button {
+    margin-top: 30px;
+  }
+}
