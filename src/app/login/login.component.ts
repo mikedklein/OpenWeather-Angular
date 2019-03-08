@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
 
   login(email: string, password: string): void {
     const auth = this.authService.login(email, password);
     if (auth !== null) {
-      alert('Success!');
+      this.router.navigate(['/login']);
     } else {
       alert('Wrong username or password');
     }
