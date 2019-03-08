@@ -7,9 +7,6 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private username: string;
-  private password: string;
-
   constructor(private authService: AuthService) {}
 
   ngOnInit() {}
@@ -22,8 +19,8 @@ export class LoginComponent implements OnInit {
       alert('Wrong username or password');
     }
   }
-
-  onSubmit(f: NgForm) {
+  // TODO should type this.
+  onSubmit(f) {
     if (f.valid) {
       this.login(f.value.username, f.value.password);
     } else {

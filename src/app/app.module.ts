@@ -3,13 +3,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 // Material Design Elements
 import { MaterialElementsModule } from './material-elements.module';
-// In memory client for now
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -34,15 +30,7 @@ import { LoginComponent } from './login/login.component';
     AuthGuard,
     BrowserAnimationsModule,
     MaterialElementsModule,
-    FormsModule,
-    HttpClientModule,
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false
-    }),
-    HttpClientInMemoryWebApiModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
