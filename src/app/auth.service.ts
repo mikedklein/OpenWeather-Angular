@@ -23,13 +23,28 @@ export class AuthService {
       return null;
     }
     const user: User = {
-      email,
-      cities: [],
-      units: 'imperial'
+      email
     };
     // Set localstorage
     localStorage.setItem('token', JSON.stringify(user));
+    if (!localStorage.getItem(user.email)) {
+      localStorage.setItem(
+        user.email,
+        JSON.stringify({ cities: [], units: 'imperial' })
+      );
+    }
     return user;
+  }
+
+  getUserData() {
+    const user = JSON.parse(localStorage.getItem('token')).email;
+    const userData = JSON.parse(localStorage.getItem(user));
+    return userData;
+  }
+
+  setUserData(userData) {
+    const user = JSON.parse(localStorage.getItem('token')).email;
+    localStorage.setItem(user, JSON.stringify(userData));
   }
 
   logout(): void {

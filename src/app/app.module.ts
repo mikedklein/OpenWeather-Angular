@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 // Material Design Elements
 import { MaterialElementsModule } from './material-elements.module';
-
+// Charting
+import { ChartsModule } from 'ng2-charts';
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth-guard/auth-guard.module';
@@ -17,6 +18,7 @@ import { NavComponent } from './ui/nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { WeatherItemComponent } from './weather/weather-item/weather-item.component';
 import { WeatherDetailComponent } from './weather/weather-detail/weather-detail.component';
+import { WeatherGraphComponent } from './weather/weather-graph/weather-graph.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { WeatherDetailComponent } from './weather/weather-detail/weather-detail.
     NavComponent,
     LoginComponent,
     WeatherItemComponent,
-    WeatherDetailComponent
+    WeatherDetailComponent,
+    WeatherGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { WeatherDetailComponent } from './weather/weather-detail/weather-detail.
     AuthGuard,
     BrowserAnimationsModule,
     MaterialElementsModule,
+    ChartsModule,
     FormsModule
   ],
   providers: [],

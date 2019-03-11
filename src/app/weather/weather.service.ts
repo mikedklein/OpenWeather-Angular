@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-
+import { AuthService } from '../auth.service';
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   getCities(): string[] {
-    const cities: [string] = JSON.parse(localStorage.getItem('token')).cities;
+    const cities: [string] = this.authService.getUserData().cities;
 
     return cities;
   }
@@ -23,7 +23,7 @@ export class WeatherService {
         '&appid=' +
         environment.appId +
         '&units=' +
-        JSON.parse(localStorage.getItem('token')).units
+        this.authService.getUserData().units
     );
   }
 
@@ -35,7 +35,7 @@ export class WeatherService {
         '&appid=' +
         environment.appId +
         '&units=' +
-        JSON.parse(localStorage.getItem('token')).units
+        this.authService.getUserData().units
     );
   }
 }

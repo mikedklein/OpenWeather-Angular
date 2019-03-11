@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { WeatherService } from '../weather/weather.service';
 import { Weather } from '../weather/Weather';
-
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,11 +14,14 @@ export class DashboardComponent implements OnInit {
   weatherData: Weather[] = [];
   units = '';
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(
+    private weatherService: WeatherService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     // On init lets get all the users locations
-    const userData = JSON.parse(localStorage.getItem('token'));
+    const userData = this.authService.getUserData();
     const userCities = userData.cities;
     this.refetchData(userCities);
     // Set the units
@@ -48,18 +51,20 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  changeUnits() {
+  changeUnits(): void {
+    let newUnits: string;
     if (this.units === 'imperial') {
-      this.units = 'metric';
+      newUnits = 'metric';
     } else {
-      this.units = 'imperial';
+      newUnits = 'imperial';
     }
     // Update the user data
-    const userData = JSON.parse(localStorage.getItem('token'));
-    userData.units = this.units;
-    localStorage.setItem('token', JSON.stringify(userData));
+    const userData = this.authService.getUserData();
+    userData.units = newUnits;
+    this.authService.setUserData(userData);
     // Update the data
     this.refetchData(userData.cities);
+    this.units = newUnits;
   }
 
   deleteCity(cityName: string): void {
@@ -81,9 +86,9 @@ export class DashboardComponent implements OnInit {
 
       // rewrite the user data
       // TODO: might be smart to move this to a service at this point
-      const userData = JSON.parse(localStorage.getItem('token'));
+      const userData = this.authService.getUserData();
       userData.cities = newUserCities;
-      localStorage.setItem('token', JSON.stringify(userData));
+      this.authService.setUserData(userData);
       this.weatherData = newWeatherData;
     }
   }
@@ -92,9 +97,9 @@ export class DashboardComponent implements OnInit {
     this.weatherService.getWeatherByCity(this.cityName).subscribe(
       data => {
         // If the response is successful lets add this to the city weather and to local storage for the user
-        const userData = JSON.parse(localStorage.getItem('token'));
+        const userData = this.authService.getUserData();
         userData.cities.push(this.cityName);
-        localStorage.setItem('token', JSON.stringify(userData));
+        this.authService.setUserData(userData);
         // Add the data to the current weather displayed
         this.weatherData.push(
           new Weather(
