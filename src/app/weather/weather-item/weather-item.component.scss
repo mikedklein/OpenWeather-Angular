@@ -1,0 +1,15 @@
+.weather-item {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.weather-item__footer {
+  display: flex;
+  .spacer {
+    flex: 1;
+  }
+}
+.weather-item__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

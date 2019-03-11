@@ -22,9 +22,14 @@ export class AuthService {
       localStorage.setItem('token', null);
       return null;
     }
+    const user: User = {
+      email,
+      cities: [],
+      units: 'imperial'
+    };
     // Set localstorage
-    localStorage.setItem('token', `{ email: ${email}, cities: [] }`);
-    return { email, cities: [] };
+    localStorage.setItem('token', JSON.stringify(user));
+    return user;
   }
 
   logout(): void {

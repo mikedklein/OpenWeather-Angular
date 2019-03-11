@@ -1,1 +1,22 @@
-<h3>Dashboard</h3>
+<div class="container">
+  <div *ngIf="errorMessage !== null" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+  <form class="add-city">
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="Enter City to Add"
+        id="city"
+        [(ngModel)]="cityName"
+        name="cityname"
+      />
+    </mat-form-field>
+    <button mat-button (click)="onSubmit()" type="submit">
+      Add City
+    </button>
+  </form>
+  <app-weather-item *ngFor="let weather of weatherData" [weather]="weather">
+  </app-weather-item>
+</div>
