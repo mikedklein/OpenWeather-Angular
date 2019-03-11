@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   login(email: string, password: string): void {
     const auth = this.authService.login(email, password);
     if (auth !== null) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/dashboard']);
     } else {
       alert('Wrong username or password');
     }

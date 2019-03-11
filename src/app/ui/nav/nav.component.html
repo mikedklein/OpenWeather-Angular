@@ -5,7 +5,7 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item><a routerLink="/heroes">Heroes</a></button>
     <button mat-menu-item><a routerLink="/dashboard">Dashboard</a></button>
+    <button mat-menu-item (click)="logOut()">Logout</button>
   </mat-menu>
 </mat-toolbar>
