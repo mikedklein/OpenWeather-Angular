@@ -1,0 +1,50 @@
+<div class="detail-table container">
+  <div class="detail-table__table-header">
+    <h1>5 Day Forecast for {{ name }}</h1>
+    <div class="spacer"></div>
+    <button mat-button color="primary" (click)="back()">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+  </div>
+
+  <table
+    *ngIf="daysOfWeather.length > 0"
+    mat-table
+    [dataSource]="daysOfWeather"
+    class="mat-elevation-z8"
+  >
+    <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="dayTxt">
+      <th mat-header-cell *matHeaderCellDef>Day</th>
+      <td mat-cell *matCellDef="let element">{{ element.dayTxt }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="highTemp">
+      <th mat-header-cell *matHeaderCellDef>High Temp</th>
+      <td mat-cell *matCellDef="let element">{{ element.highTemp }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="lowTemp">
+      <th mat-header-cell *matHeaderCellDef>Low Temp</th>
+      <td mat-cell *matCellDef="let element">{{ element.lowTemp }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Conditions</th>
+      <td mat-cell *matCellDef="let element">
+        <img
+          src="https://openweathermap.org/img/w/{{ element.description }}.png"
+        />
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

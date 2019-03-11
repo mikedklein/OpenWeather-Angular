@@ -1,7 +1,16 @@
+// Import material theming functions
+
 .weather-item {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+.weather-item__header {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
 .weather-item__footer {
   display: flex;
   .spacer {

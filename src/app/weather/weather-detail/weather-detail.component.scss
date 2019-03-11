@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+.detail-table__table-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .spacer {
+    flex: 1;
+  }
+}

@@ -1,6 +1,10 @@
 <mat-card class="weather-item">
   <mat-card-header class="weather-item__header">
-    <mat-card-title>{{ weather.city }}</mat-card-title>
+    <mat-card-title
+      ><a [routerLink]="['/details/', weather.city]">{{
+        weather.city
+      }}</a></mat-card-title
+    >
   </mat-card-header>
   <mat-card-content class="weather-item__container">
     <h2>

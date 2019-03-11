@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavComponent } from './ui/nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { WeatherItemComponent } from './weather/weather-item/weather-item.component';
+import { WeatherDetailComponent } from './weather/weather-detail/weather-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { WeatherItemComponent } from './weather/weather-item/weather-item.compon
     MessagesComponent,
     NavComponent,
     LoginComponent,
-    WeatherItemComponent
+    WeatherItemComponent,
+    WeatherDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ export class WeatherService {
   getWeatherByCity(cityName: string): Observable<any> {
     return this.http.get(
       environment.apiUrl +
-        '?q=' +
+        'weather?q=' +
         cityName +
         '&appid=' +
         environment.appId +
