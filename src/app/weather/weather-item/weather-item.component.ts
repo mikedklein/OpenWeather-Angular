@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Weather } from '../Weather';
 
 @Component({
@@ -8,5 +8,11 @@ import { Weather } from '../Weather';
 })
 export class WeatherItemComponent {
   @Input() weather: Weather;
+  @Input() units: string;
+  @Output() deleteEvent = new EventEmitter<string>();
   constructor() {}
+
+  callDashboard(cityName: string) {
+    this.deleteEvent.next(cityName);
+  }
 }

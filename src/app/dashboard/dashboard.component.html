@@ -2,21 +2,37 @@
   <div *ngIf="errorMessage !== null" class="error">
     <p>{{ errorMessage }}</p>
   </div>
-  <form class="add-city">
-    <mat-form-field>
-      <input
-        type="text"
-        matInput
-        placeholder="Enter City to Add"
-        id="city"
-        [(ngModel)]="cityName"
-        name="cityname"
-      />
-    </mat-form-field>
-    <button mat-button (click)="onSubmit()" type="submit">
-      Add City
-    </button>
-  </form>
-  <app-weather-item *ngFor="let weather of weatherData" [weather]="weather">
+  <div class="dashboard__top-row">
+    <form class="add-city">
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Enter City to Add"
+          id="city"
+          [(ngModel)]="cityName"
+          name="cityname"
+        />
+      </mat-form-field>
+      <button mat-button (click)="onSubmit()" type="submit">
+        Add City
+      </button>
+    </form>
+    <div class="spacer"></div>
+    <mat-slide-toggle
+      (click)="changeUnits()"
+      [checked]="units === 'imperial'"
+      >{{ units | titlecase }}</mat-slide-toggle
+    >
+  </div>
+  <app-weather-item
+    *ngFor="let weather of weatherData"
+    [weather]="weather"
+    [units]="units"
+    (deleteEvent)="deleteCity($event)"
+  >
   </app-weather-item>
+  <div *ngIf="weatherData.length === 0">
+    <p>Please add some cities!</p>
+  </div>
 </div>

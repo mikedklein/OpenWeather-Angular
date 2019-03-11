@@ -3,15 +3,30 @@
     <mat-card-title>{{ weather.city }}</mat-card-title>
   </mat-card-header>
   <mat-card-content class="weather-item__container">
-    <h2>Temp: {{ weather.temperature }}</h2>
+    <h2>
+      Currently {{ weather.temperature
+      }}{{ units === 'imperial' ? '&#176;F' : '&#176;C' }}
+    </h2>
     <div class="weather-item__hig_low">
-      <div>low: {{ weather.lowTemp }}</div>
-      <div>high: {{ weather.highTemp }}</div>
+      <div>
+        low: {{ weather.lowTemp
+        }}{{ units === 'imperial' ? '&#176;F' : '&#176;C' }}
+      </div>
+      <div>
+        high: {{ weather.highTemp
+        }}{{ units === 'imperial' ? '&#176;F' : '&#176;C' }}
+      </div>
     </div>
     <img src="https://openweathermap.org/img/w/{{ weather.description }}.png" />
   </mat-card-content>
   <mat-card-actions class="weather-item__footer">
     <div class="spacer"></div>
-    <button mat-raised-button color="accent">Delete</button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="callDashboard(weather.city)"
+    >
+      Delete
+    </button>
   </mat-card-actions>
 </mat-card>
